@@ -1,5 +1,5 @@
 <template>
-     <div class="game">
+  <div class="games">
     <div v-for="(game, index) in games" :key="index" class="container">
       <div class="picture">
         <img :src="game.image" alt="" width="200">
@@ -21,7 +21,7 @@ import axios from 'axios'
 import list from '../assets/gameList'
 
 export default {
-  name: 'game',
+  name: 'games',
   data() {
     return {
       games: []
@@ -34,7 +34,7 @@ export default {
       let link = `https://bgg-json.azurewebsites.net/thing/${gameId}`
       axios.get(link)
         .then(response => {
-          this.games.push(response.data)
+         this.games.push(response.data)
         })
         .catch(function (error) {
           console.log(error);
@@ -43,7 +43,7 @@ export default {
     }
   },
   beforeMount() {
-    this.loadGames()
+    return this.loadGames()
   }
 }
 </script>
