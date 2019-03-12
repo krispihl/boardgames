@@ -3,13 +3,15 @@
     <div class='header'>
       <div class='header header_wrapper'>
         <h1>List of boardgames</h1>
-        <h5>Meie laumängu nimekiri</h5>
+        <h5>[Meie laumängu nimekiri]</h5>
       </div>
     </div>
-    <div v-for="(name, index) in names" :key="index" class='list'>
-      <router-link :to="`/game/${name.id}`" class='link'>
-        <li>{{ index+1 }}. {{ name.name }}</li>
-      </router-link>
+    <div class='list'>
+      <div v-for="(name, index) in names" :key="index" class='list list_wrapper'>
+        <router-link :to="`/game/${name.id}`" class='link'>
+          <li>{{ index+1 }}. {{ name.name }}</li>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -41,18 +43,22 @@ export default {
 
 <style lang="scss">
   .container {
+    font-family: 'Varela Round', sans-serif;
     display: flex;
     flex-direction: column;
     font-size: 16px;
     line-height: 1.5em;
+    padding-bottom: 40px;
+    background-color: #eee;
+    color: #fff;
   }
 
   .header {
     display: flex;
     justify-content: space-around;
-    height: 100px;
-    background-color: aquamarine;
-    margin-bottom: 20px;
+    height: 150px;
+    background-color: #9E8FB2;
+    margin-bottom: 40px;
     text-transform: uppercase;
 
     &_wrapper {
@@ -60,10 +66,10 @@ export default {
     }
 
     h1 {
-      font-size: 30px;
+      font-size: 35px;
       font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
+      margin-top: 45px;
+      margin-bottom: 20px;
     }
 
     h5 {
@@ -73,11 +79,28 @@ export default {
   }
 
   .list {
+    margin: 0 auto;
+    font-size: 22px;
+    line-height: 1.5em;
+
+    &_wrapper {
     list-style: none;
-    margin-left: 20px;
  
     .link {
       text-decoration: none;
+
+      &:link,
+      &:visited,
+      &:active, {
+        color: #582C4D;
+      }
+
+      &:hover {
+        color: #9E8FB2;
+      }
     }
   }
+  }
+
+  
 </style>
